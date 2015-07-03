@@ -1,6 +1,11 @@
+server:
+  type: simple
+  rootPath: /api/*
+  applicationContextPath: /
 database:
   driverClass: com.mysql.jdbc.Driver
   user: root
   password:
   url: jdbc:mysql://localhost:8306/drop
+  
   

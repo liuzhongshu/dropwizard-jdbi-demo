@@ -1,9 +1,8 @@
-package com.zhongshu.lab;
+package com.zhongshu.lab.model;
 
-public class Demo {
+public class Tag {
 	private long id;
 	private String name;
-	
 	public long getId() {
 		return id;
 	}
@@ -16,6 +15,5 @@ public class Demo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	
 }

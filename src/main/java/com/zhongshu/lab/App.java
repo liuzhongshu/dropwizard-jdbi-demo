@@ -3,8 +3,11 @@ package com.zhongshu.lab;
 import org.skife.jdbi.v2.DBI;
 
 import com.zhongshu.lab.AppConfig;
+import com.zhongshu.lab.dao.PostDao;
+import com.zhongshu.lab.resource.PostResource;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -27,6 +30,7 @@ public class App extends Application<AppConfig>
 
     @Override
     public void initialize(Bootstrap<AppConfig> bootstrap) {
+    	bootstrap.addBundle(new AssetsBundle("/assets/", "/"));  
 	    bootstrap.addBundle(new MigrationsBundle<AppConfig>() {
 	        @Override
 	        public DataSourceFactory getDataSourceFactory(AppConfig configuration) {
@@ -39,9 +43,9 @@ public class App extends Application<AppConfig>
 	public void run(AppConfig configuration, Environment env) throws Exception {
 		final DBIFactory factory = new DBIFactory();
 		final DBI jdbi = factory.build(env, configuration.database, "database");
-		final DemoDao dao = jdbi.onDemand(DemoDao.class);
+		final PostDao dao = jdbi.onDemand(PostDao.class);
 		
-		env.jersey().register(new DemoResource(dao));
+		env.jersey().register(new PostResource(dao));
 		
 	}
 }

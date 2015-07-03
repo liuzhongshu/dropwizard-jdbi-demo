@@ -1,0 +1,6 @@
+{
+  "name": "dropwizard-jdbi demo",
+  "dependencies": {
+    "ng-admin": "master"
+  }
+}
